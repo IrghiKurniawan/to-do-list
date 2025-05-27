@@ -164,7 +164,7 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('landing_page') ? 'active' : '' }}"
-                                href="{{ route('landing_page') }}">Landing</a>
+                                href="{{ route('landing_page') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('kelola_akun.data') ? 'active' : '' }}"
