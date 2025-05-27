@@ -26,7 +26,7 @@ Route::middleware(['IsLogout'])->group(function () {
 Route::middleware(['IsLogin'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-    Route::get('/landing-page', [UserController::class, 'landingPage'])->name('landing_page');
+    Route::get('/home', [UserController::class, 'landingPage'])->name('landing_page');
 
     Route::prefix('/kelola_akun')->name('kelola_akun.')->group(function () {
         Route::get('/data', [UserController::class, 'index'])->name('data');
