@@ -6,6 +6,7 @@
         $tasksCount = App\Models\Task::count();
         $doneCount = App\Models\Task::where('is_done', true)->count();
         $pendingCount = App\Models\Task::where('is_done', false)->count();
+        $themeCount = App\Models\Theme::count();
 
     @endphp
     <div class="hero-section">
@@ -39,7 +40,7 @@
 
                         <!-- Quick Stats -->
                         <div class="row g-3 mt-4">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="stat-card">
                                     <div class="stat-icon bg-primary">
                                         <i class="fas fa-tasks"></i>
@@ -48,7 +49,7 @@
                                     <div class="stat-label">Total Tugas</div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="stat-card">
                                     <div class="stat-icon bg-success">
                                         <i class="fas fa-check-circle"></i>
@@ -57,13 +58,22 @@
                                     <div class="stat-label">Selesai</div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="stat-card">
                                     <div class="stat-icon bg-warning">
                                         <i class="fas fa-clock"></i>
                                     </div>
                                     <div class="stat-number">{{$pendingCount}}</div>
                                     <div class="stat-label">Pending</div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon bg-warning">
+                                        <i class="fas fa-palette"></i>
+                                    </div>
+                                    <div class="stat-number">{{$themeCount}}</div>
+                                    <div class="stat-label">Theme</div>
                                 </div>
                             </div>
                         </div>

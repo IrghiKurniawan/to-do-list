@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ThemeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::middleware(['IsLogout'])->group(function () {
 Route::middleware(['IsLogin'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-    Route::get('/home', [UserController::class, 'landingPage'])->name('landing_page');
+    Route::get('/homee', [UserController::class, 'landingPage'])->name('landing_page');
 
     Route::prefix('/kelola_akun')->name('kelola_akun.')->group(function () {
         Route::get('/data', [UserController::class, 'index'])->name('data');
@@ -55,4 +56,15 @@ Route::middleware(['IsLogin'])->group(function () {
 
     // Hapus tugas
     Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
+
+    //update task
+    Route::patch('/task/toggle/{id}',[TaskController::class, 'toggle'])->name('task.toggle');
+
+    //route theme
+    Route::get('/theme', [ThemeController::class, 'index'])->name('theme.index');
+    Route::get('/theme/create', [ThemeController::class, 'create'])->name('theme.create');
+    Route::post('/theme', [ThemeController::class, 'store'])->name('theme.store');
+    Route::get('/theme/{theme}/edit', [ThemeController::class, 'edit'])->name('theme.edit');
+    Route::put('/theme/{theme}', [ThemeController::class, 'update'])->name('theme.update');
+    Route::delete('/theme/{theme}', [ThemeController::class, 'destroy'])->name('theme.destroy');
 });

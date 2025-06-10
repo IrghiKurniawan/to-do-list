@@ -10,10 +10,17 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $task = Task::latest()->get();
+        $query = Task::query();
+        if($request->has('search')) {
+            $search = $request->search;
+            $query->where('title', 'like', "%$search%")
+                        ->orWhere('description', 'like', "%$search%");
+        }
+
+        $task = $query->latest()->get();
         return view('task.index', compact('task'));
     }
 
@@ -31,12 +38,26 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'title' => 'required',
+            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf,docx,txt|max:2048',
         ]);
 
-        Task::create($request->all());
+        $task = new Task();
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->due_date = $request->due_date;
+        $task->is_done = $request->has('is_done');
+
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('attachments'), $filename);
+            $task->attachment = $filename;
+        }
+
+        $task->save();
+
         return redirect()->route('task.index')->with('success', 'Task berhasil ditambah!');
     }
 
@@ -65,6 +86,7 @@ class TaskController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf,docx,txt|max:2048',
         ]);
 
         $task = Task::findOrFail($id);
@@ -77,6 +99,14 @@ class TaskController extends Controller
             'is_done' => $request->has('is_done'), // akan true jika dicentang, false jika tidak
         ]);
 
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('attachments'), $filename);
+            $task->attachment = $filename;
+        }
+        $task->save();
+
 
         return redirect()->route('task.index')->with('success', 'Task berhasil diperbarui!');
     }
@@ -87,5 +117,14 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect()->route('task.index')->with('success', 'Task berhasil dihapus!');
+    }
+
+    public function toggle($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->is_done = !$task->is_done;
+        $task->save();
+
+        return redirect()->route('task.index')->with('success', 'Status Task berhasil diubah!');
     }
 }

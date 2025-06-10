@@ -9,25 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('themes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->boolean('is_done')->default(false);
-            $table->string('attachment')->nullable();
-            $table->date('due_date')->nullable();
+            $table->string('name');
+            $table->string('background_color');
+            $table->string('text_color');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('task');
+        Schema::dropIfExists('themes');
     }
 };

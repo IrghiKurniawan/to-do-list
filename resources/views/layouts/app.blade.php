@@ -152,7 +152,7 @@
 
 <body>
     @if (Auth::check())
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary" style="position: sticky; top: 0; z-index: 100;">
             <div class="container">
                 <a class="navbar-brand" href="#">To Do List</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -173,6 +173,10 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('task.index') ? 'active' : '' }}"
                                 href="{{ route('task.index') }}">Daftar Tugas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('theme.index') ? 'active' : '' }}"
+                                href="{{ route('theme.index') }}">Theme</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">

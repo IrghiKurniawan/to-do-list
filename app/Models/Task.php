@@ -15,6 +15,7 @@ class Task extends Model
         'title',
         'description',
         'is_done',
+        'attachment',
         'due_date',
     ];
 }
