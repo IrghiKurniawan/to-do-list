@@ -20,6 +20,12 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'password' => Hash ::make('irghi123'),
         ]);
+        User::create([
+            'name' => 'user',
+            'email' => 'adly@gmail.com',
+            'role' => 'user',
+            'password' => Hash ::make('adly123'),
+        ]);
         //
     }
 }

@@ -13,7 +13,6 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- asset : memanggil file yg ada di folder public biasanya untuk css,js atau gambar/file tambahan --}}
-    <link rel="icon" href="{{ asset('images/logo.png') }}">
     <link rel="stylesheet" href="style.css">
     <style>
         html,
@@ -122,6 +121,7 @@
                 text-align: center;
             }
         }
+
         /* Animation for brand */
         @keyframes pulse {
             0% {
@@ -166,10 +166,12 @@
                             <a class="nav-link {{ Route::is('landing_page') ? 'active' : '' }}"
                                 href="{{ route('landing_page') }}">Home</a>
                         </li>
+                        @if (Auth::user()->role == 'admin')           
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('kelola_akun.data') ? 'active' : '' }}"
                                 href="{{ route('kelola_akun.data') }}">Kelola Akun</a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('task.index') ? 'active' : '' }}"
                                 href="{{ route('task.index') }}">Daftar Tugas</a>
@@ -180,11 +182,20 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('logout') ? 'active' : '' }}" href="{{ route('logout') }}"
-                                title="Logout">
-                                <i class="fas fa-sign-out-alt"></i>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle fs-4 me-2"></i>
+                                <span>{{ auth()->user()->name }}</span>
                             </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="{{ route('logout') }}" class="dropdown-item text-danger">
+                                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
 
@@ -209,12 +220,13 @@
     {{-- CDN Bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-    </script>
+        </script>
 
-    {{-- stack : tidak wajib diisi oleh view yg extends nya (optional), kalau yield wajib diisi oleh view extends nya --}}
+    {{-- stack : tidak wajib diisi oleh view yg extends nya (optional), kalau yield wajib diisi oleh view extends nya
+    --}}
     @stack('script')
 </body>
 

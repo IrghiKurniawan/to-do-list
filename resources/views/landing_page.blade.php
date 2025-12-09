@@ -9,39 +9,28 @@
         $themeCount = App\Models\Theme::count();
 
     @endphp
-    <div class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <div class="hero-content">
+    <div class="hero-section d-flex align-items-center justify-content-center">
+        <div class="container text-center">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-lg-8">
+                    <div class="hero-content mx-auto">
                         <div class="badge bg-primary mb-3 px-3 py-2">
                             <i class="fas fa-rocket me-1"></i>
                             Productivity App
                         </div>
                         <h1 class="hero-title mb-4">
                             Selamat Datang di
-                            <span class="text-gradient">To-Do List Irghi</span>
+                            <span class="text-gradient">To-Do List</span>
                         </h1>
                         <p class="hero-subtitle mb-4 text-muted">
-                            Kelola tugasmu dengan mudah dan teratur. Tingkatkan produktivitas dengan sistem manajemen tugas
+                            Kelola tugas dengan mudah dan teratur. Tingkatkan produktivitas dengan sistem manajemen tugas
                             yang powerful dan user-friendly.
                         </p>
 
-                        <div class="d-flex flex-wrap gap-3 mb-4">
-                            <a href="{{ route('task.index') }}" class="btn btn-primary btn-lg px-4 py-3">
-                                <i class="fas fa-list-check me-2"></i>
-                                Lihat Daftar Tugas
-                            </a>
-                            <a href="{{ route('task.create') }}" class="btn btn-outline-primary btn-lg px-4 py-3">
-                                <i class="fas fa-plus me-2"></i>
-                                Tambah Tugas Baru
-                            </a>
-                        </div>
-
                         <!-- Quick Stats -->
-                        <div class="row g-3 mt-4">
-                            <div class="col-3">
-                                <div class="stat-card">
+                        <div class="row g-3 mt-4 justify-content-center">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card mx-auto">
                                     <div class="stat-icon bg-primary">
                                         <i class="fas fa-tasks"></i>
                                     </div>
@@ -49,8 +38,8 @@
                                     <div class="stat-label">Total Tugas</div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="stat-card">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card mx-auto">
                                     <div class="stat-icon bg-success">
                                         <i class="fas fa-check-circle"></i>
                                     </div>
@@ -58,8 +47,8 @@
                                     <div class="stat-label">Selesai</div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="stat-card">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card mx-auto">
                                     <div class="stat-icon bg-warning">
                                         <i class="fas fa-clock"></i>
                                     </div>
@@ -67,8 +56,8 @@
                                     <div class="stat-label">Pending</div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="stat-card">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card mx-auto">
                                     <div class="stat-icon bg-warning">
                                         <i class="fas fa-palette"></i>
                                     </div>
@@ -77,85 +66,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-6">
-                    <div class="hero-illustration">
-                        <!-- Task Cards Animation -->
-                        <div class="floating-cards">
-                            <div class="task-card card-1">
-                                <div class="d-flex align-items-center">
-                                    <div class="task-checkbox checked"></div>
-                                    <span class="task-text completed">Meeting dengan tim</span>
-                                </div>
-                            </div>
-                            <div class="task-card card-2">
-                                <div class="d-flex align-items-center">
-                                    <div class="task-checkbox"></div>
-                                    <span class="task-text">Review dokumentasi</span>
-                                </div>
-                            </div>
-                            <div class="task-card card-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="task-checkbox checked"></div>
-                                    <span class="task-text completed">Update progress report</span>
-                                </div>
-                            </div>
-                            <div class="task-card card-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="task-checkbox"></div>
-                                    <span class="task-text">Persiapan presentasi</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Features Section -->
-    {{-- <section class="features-section py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Mengapa Pilih To-Do List Irghi?</h2>
-                    <p class="section-subtitle text-muted">Fitur-fitur powerful untuk meningkatkan produktivitas Anda</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon bg-primary">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h4>Cepat & Mudah</h4>
-                        <p class="text-muted">Interface yang intuitif memungkinkan Anda menambah dan mengelola tugas dengan
-                            cepat.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon bg-success">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4>Responsive Design</h4>
-                        <p class="text-muted">Akses tugas Anda dari perangkat apapun - desktop, tablet, atau smartphone.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon bg-warning">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4>Track Progress</h4>
-                        <p class="text-muted">Pantau kemajuan tugas Anda dengan statistik yang jelas dan mudah dipahami.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 @endsection
 
 @push('style')
@@ -458,13 +374,13 @@
 @push('script')
     <script>
         // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Animate stats on scroll
             const observerOptions = {
                 threshold: 0.5
             };
 
-            const observer = new IntersectionObserver(function(entries) {
+            const observer = new IntersectionObserver(function (entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
@@ -478,7 +394,7 @@
 
             // Add click animation to buttons
             document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     let ripple = document.createElement('span');
                     ripple.classList.add('ripple');
                     this.appendChild(ripple);

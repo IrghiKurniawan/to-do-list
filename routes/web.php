@@ -29,7 +29,9 @@ Route::middleware(['IsLogin'])->group(function () {
 
     Route::get('/homee', [UserController::class, 'landingPage'])->name('landing_page');
 
-    Route::prefix('/kelola_akun')->name('kelola_akun.')->group(function () {
+
+    
+    Route::prefix('/kelola_akun')->name('kelola_akun.')->middleware('isAdmin')->group(function () {
         Route::get('/data', [UserController::class, 'index'])->name('data');
         Route::get('/tambah', [UserController::class, 'create'])->name('tambah');
         Route::post('/tambah/proses', [UserController::class, 'store'])->name('tambah.proses');
@@ -58,7 +60,7 @@ Route::middleware(['IsLogin'])->group(function () {
     Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
 
     //update task
-    Route::patch('/task/toggle/{id}',[TaskController::class, 'toggle'])->name('task.toggle');
+    Route::patch('/task/toggle/{id}', [TaskController::class, 'toggle'])->name('task.toggle');
 
     //route theme
     Route::get('/theme', [ThemeController::class, 'index'])->name('theme.index');

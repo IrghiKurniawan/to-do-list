@@ -57,7 +57,7 @@ class UserController extends Controller
     function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('logout', 'loGoUt bErHAsiL');
+        return redirect()->route('login')->with('logout', 'Log out behasil');
     }
 
     /**
