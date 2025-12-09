@@ -36,12 +36,10 @@
                                     <div class="list-group-item d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center flex-grow-1">
                                             @if ($tasks->is_done)
-                                                <form action="{{ route('task.toggle', $tasks->id) }}" method="POST"
-                                                    class="me-3">
+                                                <form action="{{ route('task.toggle', $tasks->id) }}" method="POST" class="me-3">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <button type="submit" class="badge bg-success border-0"
-                                                        style="cursor:pointer;">
+                                                    <button type="submit" class="badge bg-success border-0" style="cursor:pointer;">
                                                         <i class="fas fa-check me-1"></i>Selesai
                                                     </button>
                                                 </form>
@@ -49,8 +47,7 @@
                                                     {{ $tasks->title }}
                                                 </strong>
                                             @else
-                                                <form action="{{ route('task.toggle', $tasks->id) }}" method="POST"
-                                                    class="me-3">
+                                                <form action="{{ route('task.toggle', $tasks->id) }}" method="POST" class="me-3">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="badge bg-warning text-dark border-0"
@@ -70,12 +67,22 @@
                                                     <i class="fas fa-paperclip me-1"></i>Lampiran
                                                 </a>
                                             @endif
-                                            <a href="{{ route('task.edit', $tasks->id) }}"
-                                                class="btn btn-outline-primary btn-sm">
+
+                                            {{-- <form action="{{ route('task.toggle', $tasks->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit"
+                                                    class="btn btn-sm {{ $tasks->is_done ? 'btn-success' : 'btn-warning' }}">
+                                                    <i
+                                                        class="fas {{ $tasks->is_done ? 'fa-check' : 'fa-hourglass-half' }} me-1"></i>
+                                                    {{-- {{ $tasks->is_done ? '✓' : '-' }} 
+                                                </button>
+                                            </form> --}}
+
+                                            <a href="{{ route('task.edit', $tasks->id) }}" class="btn btn-outline-primary btn-sm">
                                                 <i class="fas fa-edit me-1"></i>Edit
                                             </a>
-                                            <form action="{{ route('task.destroy', $tasks->id) }}" method="POST"
-                                                class="d-inline"
+                                            <form action="{{ route('task.destroy', $tasks->id) }}" method="POST" class="d-inline"
                                                 onsubmit="return confirm('Apakah Anda yakin ingin menghapus tugas ini?')">
                                                 @csrf
                                                 @method('DELETE')

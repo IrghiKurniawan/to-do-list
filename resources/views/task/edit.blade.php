@@ -157,35 +157,6 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- Quick Actions Card -->
-                    <div class="quick-actions-card mt-4">
-                        <div class="card-body">
-                            <h6 class="card-title mb-3">
-                                <i class="fas fa-bolt me-2"></i>Aksi Cepat
-                            </h6>
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <a href="{{ route('task.create') }}" class="quick-action-btn">
-                                        <i class="fas fa-plus"></i>
-                                        <span>Tugas Baru</span>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="{{ route('task.index') }}" class="quick-action-btn">
-                                        <i class="fas fa-list"></i>
-                                        <span>Semua Tugas</span>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="button" class="quick-action-btn" onclick="duplicateTask()">
-                                        <i class="fas fa-copy"></i>
-                                        <span>Duplikat</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
